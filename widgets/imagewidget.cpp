@@ -1,6 +1,8 @@
 #include "imagewidget.h"
 #include "ui_imagewidget.h"
 
+#include <qgraphicsitem.h>
+
 ImageWidget::ImageWidget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::ImageWidget)
@@ -24,12 +26,31 @@ void ImageWidget::createPreviewElemnts(int numOfElemnts)
 
 }
 
-void ImageWidget::setImages(const QVector<QImage> &value)
+void ImageWidget::setImages(const QVector<QPixmap> &value)
 {
-    images = value;
+    pxMaps_ = value;
+
 }
 
-void ImageWidget::setFrontImage(const QImage &value)
+void ImageWidget::setFrontImage(QImage *img)
 {
-    frontImage = value;
+    frontImage_ = img;
+    QGraphicsScene* scene = new QGraphicsScene();
+    ui->main_photo_gv->setScene(scene);
+    QGraphicsPixmapItem* item = new QGraphicsPixmapItem(QPixmap::fromImage(*img));
+    scene->addItem(item);
+    ui->main_photo_gv->show();
+}
+
+void ImageWidget::on_fullscreen_toolbtn_clicked()
+{
+    QDialog *fsDialog = new QDialog();
+    QGridLayout *layout = new QGridLayout();
+    QLabel *label = new QLabel();
+    QString imgPath = QFileDialog::getOpenFileName(this, tr("Open Image"), "/", tr("Image Files (*.png *.jpg *.bmp)"));
+    QPixmap pixMap(imgPath);
+    label->setPixmap(pixMap);
+    layout->addWidget(label, 0, 0);
+    fsDialog->setLayout(layout);
+    fsDialog->showFullScreen();
 }

@@ -60,5 +60,7 @@
         <file>icons/view_groups_objects_ic.png</file>
         <file>icons/zoom_in_ic.png</file>
         <file>icons/zoom_out_ic.png</file>
+        <file>iconsource.rc</file>
+        <file>favicon.ico</file>
     </qresource>
 </RCC>

@@ -37,8 +37,8 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="../resource.qrc">
-           <normaloff>:/icons/icons/full_screen_ic.png</normaloff>:/icons/icons/full_screen_ic.png</iconset>
+          <iconset resource="../res.qrc">
+           <normaloff>:/icons/full_screen_ic.png</normaloff>:/icons/full_screen_ic.png</iconset>
          </property>
         </widget>
        </item>
@@ -135,7 +135,7 @@ border-width: 1px;</string>
   </layout>
  </widget>
  <resources>
-  <include location="../resource.qrc"/>
+  <include location="../res.qrc"/>
  </resources>
  <connections/>
 </ui>
